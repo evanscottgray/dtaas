@@ -1,4 +1,4 @@
 dtaas
 =====
 
-Spooky Scary
+Spooky Scary Docker based load testing tool.
