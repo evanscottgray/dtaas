@@ -1,4 +1,4 @@
-# syn
+# dtaas/syn
 #
 # VERSION               0.0.1
 
