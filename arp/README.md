@@ -24,7 +24,7 @@ If not on Debian, just use some google fu.
 
 ### Usage
 1. `docker build --rm=true --tag="dtaas/arp" ./`
-2. `docker run -d -privileged=true -e TARGET=SomeTarget -e GATEWAY=SomeGateway dtaas/arp:latest`
+2. `docker run -d --privileged=true -e TARGET=SomeTarget -e GATEWAY=SomeGateway dtaas/arp:latest`
 
 ### Warning
 This WILL break things on your network if you're not careful. It will pwn the cam tables on your switches/routers/whatever.
