@@ -21,7 +21,7 @@ If not on Debian, just use some google fu.
 Otherwise you can pass the variables in via docker on start.
 ### Usage
 1. `docker build --rm=true --tag="dtaas/frag" ./`
-2. `docker run -d -e TARGET=SomeTarget dtaas/frag:latest`
+2. `docker run -d --privileged=true -e TARGET=SomeTarget dtaas/frag:latest`
 
 ### Warning
 This sends invalid tcp fragments. Can freak webservers out and make them cry.
